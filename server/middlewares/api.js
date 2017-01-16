@@ -87,6 +87,7 @@ module.exports = (app) => {
   });
 
   app.get('/api/topics/:name/links', (req, res) => {
+    console.log('req ',req.params.name)
     const links = db.get('links').filter((l) =>
       l.topicName === req.params.name
     ).value();
