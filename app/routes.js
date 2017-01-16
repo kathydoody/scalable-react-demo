@@ -76,7 +76,7 @@ export default function createRoutes(store) {
 
             importModules.then(([reducer, sagas, component]) => {
               injectReducer('loginContainer', reducer.default);
-              injectSagas(sagas.default);
+              injectSagas('loginContainer', sagas.default);
               renderRoute(component);
             });
 
