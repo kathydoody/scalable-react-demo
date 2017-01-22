@@ -18,7 +18,7 @@ const selectTopic = () => createSelector(
   selectRouteTopic(),
   (navigationState, routeTopicName) => {
     const selectedTopic = navigationState.topics.find(t => t.name === routeTopicName);
-    return selectedTopic || { name: '',};
+    return selectedTopic || { name: ''};
   }
 );
 

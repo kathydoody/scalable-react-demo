@@ -5,23 +5,24 @@
 */
 
 import React from 'react';
-import FontAwesome from 'react-fontawesome'
+import IconButton from '../IconButton';
 import { Link } from 'react-router'
 
 import styles from './styles.css';
 
-function AppBar({ toggleDrawer }) {
+function AppBar({ toggleDrawer, email }) {
+
+  const loginLink =  email || (<Link to="/login">login</Link>);
+
   return (
     <div className={styles.appBar}>
-      <div
-        className={styles.iconButton}
-        onClick={toggleDrawer}
-       >
-          <FontAwesome
-            className={styles.icon}
-            name="bars"
+          <IconButton
+            icon="bars"
+            buttonClass={styles.iconButton}
+            iconClass={styles.icon}
+            onClick={toggleDrawer}
            />
-      </div>
+
       <div
           className={styles.heading}
       >
@@ -30,13 +31,14 @@ function AppBar({ toggleDrawer }) {
       <div
         className={styles.linkContainer}
       >
-        <Link to="/login">login</Link>
+        { loginLink }
         </div>
     </div>
   );
 }
 
 AppBar.PropTypes = {
+  email: React.PropTypes.string.isRequired,
   toggleDrawer: React.PropTypes.func.isRequired,
 };
 

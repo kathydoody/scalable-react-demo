@@ -6,10 +6,11 @@
 
 import React from 'react';
 import Link from '../Link';
-
+import IconButton from '../IconButton';
 import styles from './styles.css';
 
-function LinkList( { links, topicName }) {
+
+function LinkList( { links, topicName, children, startAdd }) {
   const linkNodes = links.map(l => (
     <Link
       key={l.id}
@@ -21,11 +22,22 @@ function LinkList( { links, topicName }) {
     <div className={styles.linkList}>
       <h2> Topic: {topicName}</h2>
       {linkNodes}
+
+      <IconButton
+        icon="plus"
+        buttonClass={styles.button}
+        iconClass={styles.icon}
+        onClick={() => startAdd(topicName)}
+       />
+
+      {children}
     </div>
   );
 }
 
  LinkList.propTypes = {
+   startAdd: React.PropTypes.func.isRequired,
+   children: React.PropTypes.element,
    topicName: React.PropTypes.string.isRequired,
    links: React.PropTypes.arrayOf(React.PropTypes.shape({
      description: React.PropTypes.string.isRequired,

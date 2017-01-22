@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import selectLoginContainer from '../LinkListContainer/selectors';
+import selectLoginContainer from '../LoginContainer/selectors';
 
 /**
  * Direct selector to the navigationContainer state domain
